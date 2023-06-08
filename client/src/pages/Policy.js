@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 const Policy = () => {
   return (
-    <Layout>
+    <Layout title="Policy | Mayomart">
       <div className="pnf">
         <h1 className="pnf-title">Privacy Policy</h1>
         <h2 className="pnf-heading">Oops ! Page Not Found</h2>
