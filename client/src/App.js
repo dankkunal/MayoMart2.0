@@ -10,6 +10,7 @@ function App() {
   return (
     <>
       <Routes>
+        <Route path="/" Component={Home} />
         <Route path="/home" Component={Home} />
         <Route path="/register" Component={Register} />
         <Route path="/login" Component={Login} />
