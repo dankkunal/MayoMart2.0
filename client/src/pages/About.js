@@ -5,7 +5,7 @@ import { BsGithub, BsInstagram } from "react-icons/bs";
 
 const About = () => {
   return (
-    <Layout>
+    <Layout title="About | Kaniby">
       <div className=" row aboutme">
         <div className="col-md-6 ">
           <img
