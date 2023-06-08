@@ -2,6 +2,7 @@ import React from "react";
 import Header from "../Layout/Header";
 import Footer from "../Layout/Footer";
 import { Helmet } from "react-helmet";
+import { Toaster } from "react-hot-toast";
 
 export const Layout = (props) => {
   return (
@@ -13,7 +14,11 @@ export const Layout = (props) => {
         <title>{props.title}</title>
       </Helmet>
       <Header />
-      <main style={{ minHeight: "80vh" }}>{props.children}</main>
+      <main style={{ minHeight: "80vh" }}>
+        <Toaster />
+        {props.children}
+      </main>
+
       <Footer />
     </div>
   );

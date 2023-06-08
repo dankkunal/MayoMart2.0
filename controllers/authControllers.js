@@ -8,27 +8,27 @@ export const registerController = async (req, res) => {
     // Validations
     if (!name) {
       return res.send({
-        error: "Name is required",
+        message: "Name is required",
       });
     }
     if (!email) {
       return res.send({
-        error: "Email is required",
+        message: "Email is required",
       });
     }
     if (!password) {
       return res.send({
-        error: "Password is required",
+        message: "Password is required",
       });
     }
     if (!phone) {
       return res.send({
-        error: "Phone is required",
+        message: "Phone is required",
       });
     }
     if (!address) {
       return res.send({
-        error: "Address is required",
+        message: "Address is required",
       });
     }
 
@@ -37,7 +37,7 @@ export const registerController = async (req, res) => {
     // Check if user already exists
     if (existingUser) {
       return res.status(200).send({
-        success: true,
+        success: false,
         message: "Already registered, please login",
         existingUser,
       });
@@ -77,15 +77,15 @@ export const loginController = async (req, res) => {
     if (!email || !password) {
       return res.status(404).send({
         success: false,
-        error: "Invalid email or password",
+        message: "Invalid email or password",
       });
     }
     //Check if user exists
     const user = await userModel.findOne({ email });
     if (!user) {
-      return res.status(404).send({
+      return res.status(200).send({
         success: false,
-        error: "Email is not registered",
+        message: "Email is not registered",
       });
     }
     //Check if password is correct
@@ -93,7 +93,7 @@ export const loginController = async (req, res) => {
     if (!isMatch) {
       return res.status(200).send({
         success: false,
-        error: "Invalid password",
+        message: "Invalid password",
       });
     }
     //Create token
@@ -102,7 +102,7 @@ export const loginController = async (req, res) => {
     });
     res.status(200).send({
       success: true,
-      message: "User logged in successfully",
+      message: "Logged in successfully",
       user: {
         name: user.name,
         email: user.email,
