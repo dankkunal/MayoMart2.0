@@ -1,42 +1,85 @@
 /* =============RegisterForm.js============= */
 
-.register{
-    background-image: linear-gradient(0deg, #ffdee9 0%, #b5fffc 100%);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 80vh;
-    width: 100vw;
+.register {
+  background-image: linear-gradient(0deg, #ffdee9 0%, #b5fffc 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 80vh;
+  width: 100vw;
 }
 
-.register-container{
-    height: 65vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    background-color: white;
-    /* background-image: linear-gradient(0deg, #fae6ed 0%, #d5f6f5 100%); */
-    padding: 26px;
-    border-radius: 10px;
+.register-container {
+  height: 65vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: white;
+  /* background-image: linear-gradient(0deg, #fae6ed 0%, #d5f6f5 100%); */
+  padding: 26px;
+  border-radius: 10px;
 }
 
-.register form{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+.register form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
-.register form mb-3{
-    min-width: 30vw;
+.register form mb-3 {
+  min-width: 30vw;
 }
 
-.register form input{
-    min-width: 30vw;
+.register form input {
+  min-width: 30vw;
 }
 
-.register form button{
-    align-items: center;
-    min-width: 30vw;
+.register form button {
+  align-items: center;
+  min-width: 30vw;
+}
+
+/* =================ForgotPassword.js================= */
+
+.forgot-password {
+  background-image: linear-gradient(0deg, #ffdee9 0%, #b5fffc 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 80vh;
+  width: 100vw;
+}
+
+.forgot-password-container {
+  height: 65vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: white;
+  /* background-image: linear-gradient(0deg, #fae6ed 0%, #d5f6f5 100%); */
+  padding: 26px;
+  border-radius: 10px;
+}
+
+.forgot-password form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.forgot-password form mb-3 {
+  min-width: 30vw;
+}
+
+.forgot-password form input {
+  min-width: 30vw;
+}
+
+.forgot-password form button {
+  align-items: center;
+  min-width: 30vw;
 }
