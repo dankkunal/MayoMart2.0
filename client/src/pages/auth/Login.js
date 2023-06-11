@@ -64,17 +64,17 @@ const Login = () => {
                 required
               />
             </div>
+            <button type="submit" className="btn btn-primary mb-3">
+              Login
+            </button>
             <button
               type="button"
-              className="btn btn-secondary mb-3"
+              className="btn btn-secondary"
               onClick={() => {
                 navigate("/forgot-password");
               }}
             >
               Forgot Password
-            </button>
-            <button type="submit" className="btn btn-primary">
-              Login
             </button>
           </form>
         </div>

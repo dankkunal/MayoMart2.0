@@ -31,4 +31,9 @@ router.get("/user-auth", requireSignin, (req, res) => {
   res.status(200).send({ ok: true });
 });
 
+//protected route admin || Method GET
+router.get("/admin-auth", requireSignin, adminMiddleware, (req, res) => {
+  res.status(200).send({ ok: true });
+});
+
 export default router;
