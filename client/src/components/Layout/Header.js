@@ -52,7 +52,7 @@ const Header = () => {
                 <>
                   <li className="nav-item dropdown">
                     <NavLink
-                      to={""}
+                      to={"/dashboard"}
                       className="nav-link dropdown-toggle"
                       role="button"
                       data-bs-toggle="dropdown"
@@ -63,7 +63,7 @@ const Header = () => {
                     <ul className="dropdown-menu">
                       <li>
                         <NavLink
-                          to={`dashboard/${
+                          to={`/dashboard/${
                             user?.user?.isAdmin ? "admin" : "user"
                           }`}
                           className="dropdown-item"
