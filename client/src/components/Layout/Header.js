@@ -50,18 +50,41 @@ const Header = () => {
               </li>
               {user.user ? (
                 <>
+                  <li className="nav-item dropdown">
+                    <NavLink
+                      to={""}
+                      className="nav-link dropdown-toggle"
+                      role="button"
+                      data-bs-toggle="dropdown"
+                      aria-expanded="false"
+                    >
+                      {user?.user?.name}
+                    </NavLink>
+                    <ul className="dropdown-menu">
+                      <li>
+                        <NavLink
+                          to={`dashboard/${
+                            user?.user?.isAdmin ? "admin" : "user"
+                          }`}
+                          className="dropdown-item"
+                        >
+                          Dashboard
+                        </NavLink>
+                      </li>
+                      <li>
+                        <NavLink
+                          to={"/logout"}
+                          className="dropdown-item"
+                          onClick={handleLogout}
+                        >
+                          Logout
+                        </NavLink>
+                      </li>
+                    </ul>
+                  </li>
                   <li className="nav-item">
                     <NavLink to={"/cart"} className="nav-link">
                       Cart (0)
-                    </NavLink>
-                  </li>
-                  <li className="nav-item">
-                    <NavLink
-                      to={"/"}
-                      className="nav-link"
-                      onClick={handleLogout}
-                    >
-                      Logout
                     </NavLink>
                   </li>
                 </>
