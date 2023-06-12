@@ -1,6 +1,7 @@
 import categoryModel from "../models/categoryModel.js";
 import slugify from "slugify";
 
+// create category Controller
 export const createCategoryController = async (req, res) => {
   try {
     const { name } = req.body;
@@ -30,6 +31,7 @@ export const createCategoryController = async (req, res) => {
   }
 };
 
+// update category Controller
 export const updateCategoryController = async (req, res) => {
   try {
     const { name } = req.body;
@@ -49,11 +51,12 @@ export const updateCategoryController = async (req, res) => {
     res.status(500).send({
       success: false,
       error,
-      message: "Error in updating category.",
+      message: "Error while updating category.",
     });
   }
 };
 
+// get all categories Controller
 export const getCategoriesController = async (req, res) => {
   try {
     const categories = await categoryModel.find({});
@@ -72,6 +75,7 @@ export const getCategoriesController = async (req, res) => {
   }
 };
 
+// get single category Controller
 export const getCategoryController = async (req, res) => {
   try {
     const category = await categoryModel.findOne({ slug: req.params.slug });
@@ -90,6 +94,7 @@ export const getCategoryController = async (req, res) => {
   }
 };
 
+// delete category Controller
 export const deleteCategoryController = async (req, res) => {
   try {
     const { id } = req.params;
