@@ -1,47 +1,46 @@
-@import url('https://fonts.googleapis.com/css2?family=Playfair:wght@500&family=Poppins:wght@300&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Playfair:wght@500&family=Poppins:wght@300&display=swap");
 /* font-family: 'Playfair', serif;
 font-family: 'Poppins', sans-serif; */
 
-
-*{
+* {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
 .navbar {
-  font-family: 'Poppins', sans-serif;
+  font-family: "Poppins", sans-serif;
   font-size: 17px;
   line-height: 26px;
 }
 
-.nav-link{
+.nav-link {
   font-weight: 300 !important;
 }
 
-.active{
+.active {
   border-bottom: 0.5px solid black;
 }
 
 /* ===============FOOTER================ */
 
 .footer {
-  color : "white";
+  color: "white";
   background-color: black;
   padding: 25px;
 }
 
-.footer p{
+.footer p {
   color: white;
 }
 
-.footer a{
+.footer a {
   color: white;
-  text-decoration: none ;
+  text-decoration: none;
   padding: 10px;
 }
 
-.footer a:hover{
+.footer a:hover {
   color: #f1f1f1;
   border-bottom: 0.5px solid white;
 }
@@ -106,4 +105,10 @@ font-family: 'Poppins', sans-serif; */
   justify-content: center;
   min-height: 70vh;
   flex-direction: column;
+}
+
+/* ===============PRODUCTS=============== */
+.product-link {
+  text-decoration: none !important;
+  color: black;
 }

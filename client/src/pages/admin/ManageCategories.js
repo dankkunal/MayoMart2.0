@@ -81,7 +81,7 @@ const ManageCategories = () => {
       const { data } = await axios.get(
         `${process.env.REACT_APP_API}/api/v1/category/get-categories`
       );
-      if (data.success) setCategories(data.categories);
+      if (data?.success) setCategories(data?.categories);
     } catch (error) {
       console.log(error);
       toast.error("Error loading categories");
@@ -107,6 +107,7 @@ const ManageCategories = () => {
                 value={name}
                 setValue={setName}
                 handleSubmit={handleSubmit}
+                buttonName={"Create Category"}
               />
             </div>
             <div className="w-75">
@@ -159,6 +160,7 @@ const ManageCategories = () => {
                 value={updatedName}
                 setValue={setUpdatedName}
                 handleSubmit={handleUpdate}
+                buttonName={"Update Category"}
               />
             </Modal>
           </div>
