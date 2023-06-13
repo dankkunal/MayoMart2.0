@@ -14,7 +14,7 @@ const CategoryForm = (props) => {
           />
         </div>
         <button type="submit" className="btn btn-primary">
-          Submit
+          {props.buttonName}
         </button>
       </form>
     </>
