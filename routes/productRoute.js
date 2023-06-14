@@ -11,6 +11,9 @@ import {
   deleteProductController,
   getProductPhotoController,
   updateProductController,
+  ProductsFiltersController,
+  productsCountController,
+  productsListController,
 } from "../controllers/productControllers.js";
 
 const router = express.Router();
@@ -50,5 +53,14 @@ router.delete(
   adminMiddleware,
   deleteProductController
 );
+
+//product filter
+router.post("/product-filters", ProductsFiltersController);
+
+//product count
+router.get("/product-count", productsCountController);
+
+//product per page
+router.get("/product-list/:page", productsListController);
 
 export default router;

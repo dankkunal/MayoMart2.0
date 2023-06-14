@@ -60,6 +60,10 @@ const ManageCategories = () => {
   //handleDelete function for deleting category
   const handleDelete = async (selectedCategory) => {
     try {
+      let answer = window.confirm(
+        "Are you sure you want to delete this Category?"
+      );
+      if (!answer) return;
       const { data } = await axios.delete(
         `${process.env.REACT_APP_API}/api/v1/category/delete-category/${selectedCategory._id}`
       );
