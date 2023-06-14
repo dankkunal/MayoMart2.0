@@ -189,3 +189,75 @@ export const deleteProductController = async (req, res) => {
     });
   }
 };
+
+// product filter Controller
+export const ProductsFiltersController = async (req, res) => {
+  try {
+    const { checked, radio } = req.body;
+    let args = {};
+    if (checked.length > 0) {
+      args.category = checked;
+    }
+    if (radio.length) args.price = { $gte: radio[0], $lte: radio[1] };
+    const products = await productModel.find(args);
+    res.status(200).send({
+      success: true,
+      count: products.length,
+      products,
+      message: "Products filtered successfully.",
+    });
+  } catch (error) {
+    console.log(error);
+    res.status(400).send({
+      success: false,
+      error,
+      message: "Error while filtering products.",
+    });
+  }
+};
+
+// product count Controller
+export const productsCountController = async (req, res) => {
+  try {
+    const total = await productModel.find({}).estimatedDocumentCount();
+    res.status(200).send({
+      success: true,
+      total,
+      message: "Products count fetched successfully.",
+    });
+  } catch (error) {
+    console.log(error);
+    res.status(400).send({
+      success: false,
+      error,
+      message: "Error while getting products count.",
+    });
+  }
+};
+
+// product list Controller
+export const productsListController = async (req, res) => {
+  try {
+    const perPage = 12;
+    const page = req.params.page ? req.params.page : 1;
+    const products = await productModel
+      .find({})
+      .select("-photo")
+      .skip((page - 1) * perPage)
+      .limit(perPage)
+      .sort({ createdAt: -1 });
+    res.status(200).send({
+      success: true,
+      count: products.length,
+      products,
+      message: "Products fetched successfully.",
+    });
+  } catch (error) {
+    console.log(error);
+    res.status(400).send({
+      success: false,
+      error,
+      message: "Error while getting products list.",
+    });
+  }
+};
