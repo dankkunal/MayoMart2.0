@@ -14,6 +14,8 @@ import {
   ProductsFiltersController,
   productsCountController,
   productsListController,
+  searchProductController,
+  relatedProductsController,
 } from "../controllers/productControllers.js";
 
 const router = express.Router();
@@ -62,5 +64,14 @@ router.get("/product-count", productsCountController);
 
 //product per page
 router.get("/product-list/:page", productsListController);
+
+//search product
+router.get("/search-product/:keyword", searchProductController);
+
+//related products
+router.get(
+  "/get-related-products/:productId/:categoryId",
+  relatedProductsController
+);
 
 export default router;
