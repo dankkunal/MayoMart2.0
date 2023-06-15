@@ -18,12 +18,15 @@ import Orders from "./pages/user/Orders";
 import Profile from "./pages/user/Profile";
 import ManageProducts from "./pages/admin/ManageProducts";
 import UpdateProduct from "./pages/admin/UpdateProduct";
+import SearchResults from "./pages/SearchResults";
+import ProductDetails from "./pages/ProductDetails";
 function App() {
   return (
     <>
       <Routes>
         <Route path="/" Component={Home} />
         <Route path="/home" Component={Home} />
+        <Route path="/search-results" Component={SearchResults} />
         <Route path="/dashboard" Component={PrivateRoute}>
           <Route path="user" Component={UserDashboard} />
           <Route path="user/profile" Component={Profile} />
@@ -37,6 +40,7 @@ function App() {
           <Route path="admin/users" Component={Users} />
           <Route path="admin/manage-products" Component={ManageProducts} />
         </Route>
+        <Route path="/product/:slug" Component={ProductDetails} />
         <Route path="/register" Component={Register} />
         <Route path="/login" Component={Login} />
         <Route path="/forgot-password" Component={ForgotPassword} />

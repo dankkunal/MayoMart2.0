@@ -7,7 +7,7 @@ const About = () => {
   return (
     <Layout title="About | Kaniby">
       <div className=" row aboutme">
-        <div className="col-md-6 ">
+        <div className="col-md-6 text-center">
           <img
             src="/images/Kaniby.jpg"
             alt="contactus"
