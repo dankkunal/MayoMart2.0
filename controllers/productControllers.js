@@ -1,4 +1,5 @@
 import productModel from "../models/productModel.js";
+import categoryModel from "../models/categoryModel.js";
 import slugify from "slugify";
 import fs from "fs";
 
@@ -309,6 +310,31 @@ export const relatedProductsController = async (req, res) => {
       success: false,
       error,
       message: "Error while getting related products.",
+    });
+  }
+};
+
+// category Products Controller
+export const categoryProductsController = async (req, res) => {
+  try {
+    const category = await categoryModel.findOne({ slug: req.params.slug });
+    const products = await productModel
+      .find({ category })
+      .select("-photo")
+      .populate("category");
+    res.status(200).send({
+      success: true,
+      count: products.length,
+      category,
+      products,
+      message: "Category products fetched successfully.",
+    });
+  } catch (error) {
+    console.log(error);
+    res.status(400).send({
+      success: false,
+      error,
+      message: "Error while getting category products.",
     });
   }
 };

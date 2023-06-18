@@ -20,12 +20,16 @@ import ManageProducts from "./pages/admin/ManageProducts";
 import UpdateProduct from "./pages/admin/UpdateProduct";
 import SearchResults from "./pages/SearchResults";
 import ProductDetails from "./pages/ProductDetails";
+import Categories from "./pages/Categories";
+import CategoryProducts from "./pages/CategoryProducts";
 function App() {
   return (
     <>
       <Routes>
         <Route path="/" Component={Home} />
         <Route path="/home" Component={Home} />
+        <Route path="/categories" Component={Categories} />
+        <Route path="/category/:slug" Component={CategoryProducts} />
         <Route path="/search-results" Component={SearchResults} />
         <Route path="/dashboard" Component={PrivateRoute}>
           <Route path="user" Component={UserDashboard} />
