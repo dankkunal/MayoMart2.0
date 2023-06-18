@@ -16,6 +16,7 @@ import {
   productsListController,
   searchProductController,
   relatedProductsController,
+  categoryProductsController,
 } from "../controllers/productControllers.js";
 
 const router = express.Router();
@@ -73,5 +74,8 @@ router.get(
   "/get-related-products/:productId/:categoryId",
   relatedProductsController
 );
+
+//category products
+router.get("/get-category-products/:slug", categoryProductsController);
 
 export default router;
