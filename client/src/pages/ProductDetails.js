@@ -3,10 +3,15 @@ import Layout from "../components/Layout/Layout";
 import axios from "axios";
 import { useParams } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
+import { useCart } from "../context/CartContext";
+import toast from "react-hot-toast";
+import { useAuth } from "../context/AuthContext";
 
 const ProductDetails = () => {
+  const [user] = useAuth();
   const navigate = useNavigate();
   const params = useParams();
+  const [cart, setCart] = useCart();
   const [product, setProduct] = useState({});
   const [relatedProducts, setRelatedProducts] = useState([]);
 
@@ -67,7 +72,20 @@ const ProductDetails = () => {
           >
             <br />₹ {product.price}
           </p>
-          <button className="btn btn-primary">Add to cart</button>
+          <button
+            className="btn btn-primary"
+            onClick={() => {
+              if (!user?.token) {
+                toast.error("Please login to add items to cart.");
+                return navigate("/login");
+              }
+              setCart([...cart, product]);
+              localStorage.setItem("cart", JSON.stringify([...cart, product]));
+              toast.success("Item added to cart.");
+            }}
+          >
+            Add to cart
+          </button>
         </div>
       </div>
       <h4 className="text-center mt-2">Similar Products</h4>
@@ -91,7 +109,23 @@ const ProductDetails = () => {
                   {product.description.substring(0, 25)}...
                 </p>
                 <p className="card-text">₹ {product.price}</p>
-                <button className="btn btn-primary">Add to cart</button>
+                <button
+                  className="btn btn-primary"
+                  onClick={() => {
+                    if (!user?.token) {
+                      toast.error("Please login to add items to cart.");
+                      return navigate("/login");
+                    }
+                    setCart([...cart, product]);
+                    localStorage.setItem(
+                      "cart",
+                      JSON.stringify([...cart, product])
+                    );
+                    toast.success("Item added to cart.");
+                  }}
+                >
+                  Add to cart
+                </button>
                 <br />
                 <button
                   className="btn btn-secondary mt-2"

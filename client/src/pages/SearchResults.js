@@ -2,10 +2,16 @@ import React from "react";
 import Layout from "../components/Layout/Layout";
 import { useSearch } from "../context/SearchContext";
 import { useNavigate } from "react-router-dom";
+import { useCart } from "../context/CartContext";
+import toast from "react-hot-toast";
+import { useAuth } from "../context/AuthContext";
 
 const SearchResults = () => {
+  const [user] = useAuth();
   const navigate = useNavigate();
+  const [cart, setCart] = useCart();
   const [values] = useSearch();
+
   return (
     <Layout title={"Search Results"}>
       <div className="container">
@@ -35,7 +41,23 @@ const SearchResults = () => {
                     {product.description.substring(0, 25)}...
                   </p>
                   <p className="card-text">₹ {product.price}</p>
-                  <button className="btn btn-primary">Add to cart</button>
+                  <button
+                    className="btn btn-primary"
+                    onClick={() => {
+                      if (!user?.token) {
+                        toast.error("Please login to add items to cart.");
+                        return navigate("/login");
+                      }
+                      setCart([...cart, product]);
+                      localStorage.setItem(
+                        "cart",
+                        JSON.stringify([...cart, product])
+                      );
+                      toast.success("Item added to cart.");
+                    }}
+                  >
+                    Add to cart
+                  </button>
                   <br />
                   <button
                     className="btn btn-secondary mt-2"

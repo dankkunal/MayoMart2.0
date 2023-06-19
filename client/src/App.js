@@ -22,6 +22,7 @@ import SearchResults from "./pages/SearchResults";
 import ProductDetails from "./pages/ProductDetails";
 import Categories from "./pages/Categories";
 import CategoryProducts from "./pages/CategoryProducts";
+import Cart from "./pages/Cart";
 function App() {
   return (
     <>
@@ -45,6 +46,7 @@ function App() {
           <Route path="admin/manage-products" Component={ManageProducts} />
         </Route>
         <Route path="/product/:slug" Component={ProductDetails} />
+        <Route path="/cart" Component={Cart} />
         <Route path="/register" Component={Register} />
         <Route path="/login" Component={Login} />
         <Route path="/forgot-password" Component={ForgotPassword} />
