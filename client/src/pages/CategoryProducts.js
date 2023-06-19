@@ -1,14 +1,20 @@
 import React, { useEffect, useState } from "react";
 import Layout from "../components/Layout/Layout";
 import axios from "axios";
+import { useAuth } from "../context/AuthContext";
 import { useParams } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
+import { useCart } from "../context/CartContext";
+import toast from "react-hot-toast";
 
 const CategoryProducts = () => {
+  const [user] = useAuth();
   const [category, setCategory] = useState([]);
   const [products, setProducts] = useState([]);
   const navigate = useNavigate();
   const params = useParams();
+  const [cart, setCart] = useCart();
+
   const getProductsByCategory = async () => {
     try {
       const { data } = await axios.get(
@@ -50,7 +56,23 @@ const CategoryProducts = () => {
                     {product.description.substring(0, 25)}...
                   </p>
                   <p className="card-text">₹ {product.price}</p>
-                  <button className="btn btn-primary">Add to cart</button>
+                  <button
+                    className="btn btn-primary"
+                    onClick={() => {
+                      if (!user?.token) {
+                        toast.error("Please login to add items to cart.");
+                        return navigate("/login");
+                      }
+                      setCart([...cart, product]);
+                      localStorage.setItem(
+                        "cart",
+                        JSON.stringify([...cart, product])
+                      );
+                      toast.success("Item added to cart.");
+                    }}
+                  >
+                    Add to cart
+                  </button>
                   <br />
                   <button
                     className="btn btn-secondary mt-2"
