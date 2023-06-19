@@ -2,10 +2,12 @@ import React from "react";
 import Layout from "../components/Layout/Layout";
 import { useCart } from "../context/CartContext";
 import { useAuth } from "../context/AuthContext";
+import { useNavigate } from "react-router-dom";
 
 const Cart = () => {
   const [cart, setCart] = useCart();
   const [user] = useAuth();
+  const navigate = useNavigate();
 
   const removeCartItem = (productId) => {
     try {
@@ -22,6 +24,7 @@ const Cart = () => {
   const totalPrice = () => {
     try {
       let total = 0;
+      // eslint-disable-next-line array-callback-return
       cart?.map((product) => {
         total += product.price;
       });
@@ -78,6 +81,29 @@ const Cart = () => {
             <h4>Cart Summary</h4>
             <h6>Checkout | Total Items: {cart?.length} | Payment</h6>
             <p>Total : {totalPrice()}</p>
+            {user?.user?.address ? (
+              <>
+                <div className="mb-3">
+                  <p>Current Address: </p>
+                  <p>{user?.user?.address}</p>
+                  <button
+                    className="btn btn-outline-warning"
+                    onClick={() => navigate("/dashboard/user/profile")}
+                  >
+                    Update address
+                  </button>
+                </div>
+              </>
+            ) : (
+              <div className="mb-3">
+                <button
+                  className="btn btn-outline-warning"
+                  onClick={() => navigate("/dashboard/user/profile")}
+                >
+                  Add address
+                </button>
+              </div>
+            )}
           </div>
         </div>
       </div>
