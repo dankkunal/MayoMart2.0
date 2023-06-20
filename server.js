@@ -6,6 +6,7 @@ import authRoutes from "./routes/authRoute.js";
 import categoryRoutes from "./routes/categoryRoute.js";
 import productRoutes from "./routes/productRoute.js";
 import cors from "cors";
+import path from "path";
 
 //Configuring dotenv
 dotenv.config();
@@ -20,6 +21,7 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 app.use(morgan("dev"));
+app.use(express.static(path.join(__dirname, "./client/build")));
 
 //ROUTES
 app.use("/api/v1/auth", authRoutes);
@@ -27,8 +29,8 @@ app.use("/api/v1/category", categoryRoutes);
 app.use("/api/v1/product", productRoutes);
 
 //REST API
-app.get("/", (req, res) => {
-  res.send("<h1><center>HELLO WORLD</center></h1>");
+app.use("*", function (req, res) {
+  res.sendFile(path.join(__dirname, "./client/build/index.html"));
 });
 
 //PORT
