@@ -7,6 +7,11 @@ import categoryRoutes from "./routes/categoryRoute.js";
 import productRoutes from "./routes/productRoute.js";
 import cors from "cors";
 import path from "path";
+import { fileURLToPath } from "url";
+
+//esmodule fix
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 //Configuring dotenv
 dotenv.config();
